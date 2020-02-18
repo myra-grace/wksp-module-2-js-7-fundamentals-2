@@ -25,3 +25,15 @@ var mostPopularFood = [
 // Output them in a tidy top-ten fashion in the console.
 
 // NO for loops!
+
+function top10(first, last) {
+    mostPopularFood.unshift(first);
+    mostPopularFood.pop();
+    mostPopularFood.push(last);
+
+    mostPopularFood.forEach((plate, number) => {
+        console.log(`${number +1}: ${plate}`);
+    });
+    return 'These were the top 10 dishes according to Grubhub'
+}
+console.log(top10('bean burritos','buffalo-flavored cauliflower'));

@@ -28,6 +28,27 @@ var favoriteDessert = {
 //      2. <DESSERT_NAME>
 //      ...
 
+let desserts = Object.values(favoriteDessert);
+console.log(desserts)
+
+let occurrence = {};
+
+desserts.forEach(function (dish) {
+    if (occurrence[dish]) {
+        occurrence[dish]++;
+    } else {
+        occurrence[dish] = 1;
+    }
+});
+console.log('occurrence: ', occurrence);
+
+let keys = Object.keys(occurrence);
+
+let arr = keys.sort(function(a, b) {
+    return occurrence[b] - occurrence[a];
+});
+
+console.log(arr);
 
 // B)
 // The names of those that said the same desserts. Output the list in
@@ -35,3 +56,13 @@ var favoriteDessert = {
 // e.g. - brownies: <NAME>, <NAME>, ...
 //      - ice-cream: <NAME>, <NAME>, <NAME>, ...
 //      ...
+
+Object.keys(occurrence).forEach(dessertKey => {
+    let names = [];
+    Object.keys(favoriteDessert).forEach(name => {
+        if (favoriteDessert[name] === dessertKey) {
+            names.push(name);
+        }
+    });
+    console.log(`${dessertKey}: ${names.join(', ')}`);
+});

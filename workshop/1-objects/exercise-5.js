@@ -7,7 +7,8 @@ const people = [
     {name: {first: "Eva", middle: "Lu", last: "Ator"}, age: 40},
     {name: {first: "Lem", middle: "E.", last: "Tweakit"}, age: 45},
     {name: {first: "Louis", last: "Reasoner"}, age: 21},
-    {name: {first: "Shahan", middle: "Haig", last: "Krakirian"}, age: 21}
+    {name: {first: "Shahan", middle: "Haig", last: "Krakirian"}, age: 21},
+    {name: {first: "Myra-Grace", middle: "", last: "Salinas"}, age: 23}
 ];
 
 // Exercise 5.0
@@ -24,7 +25,11 @@ const people = [
 // Write a function that returns the average age of the `people` array.
 
 function avgAge(peopleArr) {
-    // Yuor code here
+    let sum = 0;
+    people.forEach(person => {
+        sum += person.age;
+    });
+    return sum / peopleArr.length; 
 }
 
 console.log(`Average age is ${avgAge(people)}.`);
@@ -38,8 +43,20 @@ console.log(`Average age is ${avgAge(people)}.`);
 // an argument, returns an array of their full names (each full name is a string).
 // Can you make use of your `fullName` function here?
 
+function betterFullName(person) {
+    let fullname = person.name.first;
+
+    if (!!person.name.middle) {
+        fullname += ' ' + person.name.middle;
+    }
+
+    return fullname + " " + person.name.last;
+}
+
 function fullName(peopleArr) {
-    // Your code here
+    return peopleArr.map(person => {
+        return betterFullName(person);
+    });
 
 }
 
@@ -54,8 +71,9 @@ console.log(fullName(people));
 // returns an array of just the people that are older than the specified age.. 
 
 function olderPeople(peopleArr, age) {
-    // Your code here
-
+    return peopleArr.filter(people => {
+        return people.age > age;
+    });
 }
 
 console.log(olderPeople(people, 26));

@@ -10,3 +10,14 @@ const colors = ["red", "orange", "yellow", "green", "pink", "black", "gray", "bl
 
 // You must console the colors array.
 // NO for loops!
+
+let colorSpec = []
+
+colors.forEach(item => {
+    if (item === 'red' || item === 'orange' || item === 'yellow' || item === 'green' || item === 'blue' || item === 'violet') {
+        colorSpec.push(item);
+    }
+});
+
+
+console.log(colorSpec);
